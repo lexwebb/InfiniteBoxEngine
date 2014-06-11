@@ -6,13 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InfiniteBoxEngine
-{
+namespace InfiniteBoxEngine {
     /// <summary>
     /// The ControlManager is where all game control is calculated and retrieved from. Includes custom control patterns extended from MouseState and KeyboardState. 
     /// </summary>
-    public class ControlManager
-    {
+    public class ControlManager {
         MouseState mouseState;
         KeyboardState keyboardState;
         Vector2 mousePosition;
@@ -34,8 +32,7 @@ namespace InfiniteBoxEngine
         /// </summary>
         /// <param name="mState"></param>
         /// <param name="kState"></param>
-        public ControlManager(MouseState mState, KeyboardState kState)
-        {
+        public ControlManager(MouseState mState, KeyboardState kState) {
             this.oldScrollValue = mState.ScrollWheelValue;
             KeyPressEvent += nullMethod;
         }
@@ -44,19 +41,17 @@ namespace InfiniteBoxEngine
         /// Updates the keyboard state for external use.
         /// </summary>
         /// <param name="state"></param>
-        public void UpdateKeyboardState(KeyboardState state)
-        {
+        public void UpdateKeyboardState(KeyboardState state) {
             this.keyboardState = state;
 
-            foreach(Keys key in GetPressedKeys())
-            {
+            foreach (Keys key in GetPressedKeys()) {
                 KeyPressEventArgs args = new KeyPressEventArgs();
                 args.Key = key;
                 args.KeyboardState = state;
                 args.TimeInMilliseconds = Engine.GetGameTime().TotalMilliseconds;
                 KeyPressEvent(this, args);
             }
-            
+
         }
 
         private void nullMethod(object sender, KeyPressEventArgs args) { }
@@ -65,8 +60,7 @@ namespace InfiniteBoxEngine
         /// Gets a list of keys current pressed.
         /// </summary>
         /// <returns>List of keys.</returns>
-        public Keys[] GetPressedKeys()
-        {
+        public Keys[] GetPressedKeys() {
             return keyboardState.GetPressedKeys();
         }
 
@@ -75,8 +69,7 @@ namespace InfiniteBoxEngine
         /// </summary>
         /// <param name="key">The key in question.</param>
         /// <returns>The state of the key.</returns>
-        public KeyState GetKeyState(Keys key)
-        {
+        public KeyState GetKeyState(Keys key) {
             if (!isControlFocused)
                 if (keyboardState.IsKeyUp(key))
                     return KeyState.Up;
@@ -91,7 +84,7 @@ namespace InfiniteBoxEngine
         /// </summary>
         /// <param name="key">The key in question.</param>
         /// <returns>True if the key is down.</returns>
-        public bool IsKeyDown(Keys key){
+        public bool IsKeyDown(Keys key) {
             if (!isControlFocused)
                 return keyboardState.IsKeyDown(key);
             else
@@ -103,20 +96,18 @@ namespace InfiniteBoxEngine
         /// </summary>
         /// <param name="key">The key in question.</param>
         /// <returns>True if the key is up.</returns>
-        public bool IsKeyUp(Keys key)
-        {
+        public bool IsKeyUp(Keys key) {
             if (!isControlFocused)
                 return keyboardState.IsKeyUp(key);
             else
                 return true;
         }
-            
+
         /// <summary>
         /// Updates mouse boolean Feilds stored in the ControlManager.
         /// </summary>
         /// <param name="state"></param>
-        public void UpdateMouseState(MouseState state)
-        {
+        public void UpdateMouseState(MouseState state) {
             this.mouseState = state;
             this.mousePosition = new Vector2(state.Position.X, state.Position.Y);
             this.scrollValue = state.ScrollWheelValue;
@@ -126,31 +117,26 @@ namespace InfiniteBoxEngine
             //------Left-Button--------
             if (mouseState.LeftButton == ButtonState.Pressed)
                 leftMouseCounter++;
-            else if (mouseState.LeftButton == ButtonState.Released && leftMouseCounter > 0)
-            {
+            else if (mouseState.LeftButton == ButtonState.Released && leftMouseCounter > 0) {
                 this.isLeftReleased = true;
                 leftMouseCounter = 0;
             }
-            else
-            {
+            else {
                 leftMouseCounter = 0;
                 this.isLeftReleased = false;
             }
 
-            if (leftMouseCounter == 1)
-            {
+            if (leftMouseCounter == 1) {
                 this.isLeftClicked = true;
                 Console.Out.WriteLine(mousePosition);
             }
             else if (leftMouseCounter > 1 && isLeftClicked == true)
                 this.isLeftClicked = false;
-            else if (leftMouseCounter > 5)
-            {
+            else if (leftMouseCounter > 5) {
                 this.isLeftClicked = false;
                 this.isLeftHeld = true;
             }
-            else
-            {
+            else {
                 this.isLeftClicked = false;
                 this.isLeftHeld = false;
             }
@@ -161,8 +147,7 @@ namespace InfiniteBoxEngine
                 rightMouseCounter++;
             else if (mouseState.RightButton == ButtonState.Released && rightMouseCounter > 0)
                 this.isRightReleased = true;
-            else
-            {
+            else {
                 rightMouseCounter = 0;
                 this.isRightReleased = false;
             }
@@ -171,13 +156,11 @@ namespace InfiniteBoxEngine
                 this.isRightClicked = true;
             else if (rightMouseCounter > 1 && isRightClicked == true)
                 this.isRightClicked = false;
-            else if (rightMouseCounter > 5)
-            {
+            else if (rightMouseCounter > 5) {
                 this.isRightClicked = false;
                 this.isRightHeld = true;
             }
-            else
-            {
+            else {
                 this.isRightClicked = false;
                 this.isRightHeld = false;
             }
@@ -188,8 +171,7 @@ namespace InfiniteBoxEngine
                 rightMouseCounter++;
             else if (mouseState.MiddleButton == ButtonState.Released && middleMouseCounter > 0)
                 this.isMiddleReleased = true;
-            else
-            {
+            else {
                 middleMouseCounter = 0;
                 this.isMiddleReleased = false;
             }
@@ -198,80 +180,65 @@ namespace InfiniteBoxEngine
                 this.isMiddleClicked = true;
             else if (middleMouseCounter > 1 && isMiddleClicked == true)
                 this.isMiddleClicked = false;
-            else if (middleMouseCounter > 5)
-            {
+            else if (middleMouseCounter > 5) {
                 this.isMiddleClicked = false;
                 this.isMiddleHeld = true;
             }
-            else
-            {
+            else {
                 this.isMiddleClicked = false;
                 this.isMiddleHeld = false;
             }
         }
 
-        public Vector2 MousePosition
-        {
+        public Vector2 MousePosition {
             get { return mousePosition; }
         }
 
-        public bool IsLeftHeld
-        {
+        public bool IsLeftHeld {
             get { return isLeftHeld; }
         }
 
-        public bool IsLeftClicked
-        {
+        public bool IsLeftClicked {
             get { return isLeftClicked; }
         }
 
-        public bool IsLeftReleased
-        {
-            get { return isLeftReleased;  }
+        public bool IsLeftReleased {
+            get { return isLeftReleased; }
         }
 
-        public bool IsRightHeld
-        {
+        public bool IsRightHeld {
             get { return isRightHeld; }
         }
 
-        public bool IsRightClicked
-        {
+        public bool IsRightClicked {
             get { return isRightClicked; }
         }
 
-        public bool IsRightReleased
-        {
+        public bool IsRightReleased {
             get { return isRightReleased; }
         }
 
-        public bool IsMiddleHeld
-        {
+        public bool IsMiddleHeld {
             get { return isMiddleHeld; }
         }
 
-        public bool IsMiddleClicked
-        {
+        public bool IsMiddleClicked {
             get { return isMiddleClicked; }
         }
 
-        public bool IsMiddleReleased
-        {
-            get { return isMiddleReleased;  }
+        public bool IsMiddleReleased {
+            get { return isMiddleReleased; }
         }
 
-        public int ScrollAmount
-        {
+        public int ScrollAmount {
             get { return scrollAmount; }
         }
 
-        public int ScrollValue
-        {
+        public int ScrollValue {
             get { return scrollValue; }
         }
 
-        public bool IsControlFocused
-        {
+        public bool IsControlFocused {
             get { return isControlFocused; }
             set { isControlFocused = value; }
         }

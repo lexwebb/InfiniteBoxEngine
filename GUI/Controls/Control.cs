@@ -7,10 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InfiniteBoxEngine.GUI.Controls
-{
-    abstract public class Control : Clickable
-    {
+namespace InfiniteBoxEngine.GUI.Controls {
+    abstract public class Control : Clickable {
         Dictionary<String, Texture2D> images = new Dictionary<string, Texture2D>();
 
         bool visible, usable;
@@ -18,15 +16,14 @@ namespace InfiniteBoxEngine.GUI.Controls
         Control alignedTo;
         Alignment alignment;
         float yOffset, xOffset;
-        Color backgroundColor, borderColor =  Color.White;
+        Color backgroundColor, borderColor = Color.White;
         bool showBorder;
         bool screenAligned;
         bool canBeFocus, isFocused;
         float transparency;
 
         public Control(Vector2 position, int width, int height, Control alignedTo, Dictionary<String, Texture2D> images) :
-            base(position, width, height)
-        {
+            base(position, width, height) {
             this.images = images;
             this.Visible = true;
             this.Usable = true;
@@ -42,68 +39,59 @@ namespace InfiniteBoxEngine.GUI.Controls
 
         public virtual void DrawForeground(SpriteBatch sb, GameTime gt) { }
 
-        public virtual void DrawHighlights(SpriteBatch sb, GameTime gt) 
-        {
-            if(ShowBorder)
+        public virtual void DrawHighlights(SpriteBatch sb, GameTime gt) {
+            if (ShowBorder)
                 DrawUtilities.DrawControlBorder(sb, this.GetClickableArea(), borderColor);
         }
 
         public virtual void OnFocusedChanged(bool isFocused) { }
 
-        public Rectangle GetRelativeRectangle()
-        {
+        public Rectangle GetRelativeRectangle() {
             RecalculateClickArea();
             return new Rectangle(GetClickableArea().X, GetClickableArea().Y, Width, Height);
         }
 
-        public Vector2 GetRelativeDrawOffset()
-        {
+        public Vector2 GetRelativeDrawOffset() {
             Vector2 panelOffset = Vector2.Zero;
 
-            if (alignedTo is Panel)
-            {
+            if (alignedTo is Panel) {
                 //panelOffset = new Vector2(alignedTo.Width, alignedTo.Height);
                 return new Vector2(alignedTo.Position.X + XOffset, alignedTo.Position.Y + YOffset);
             }
 
             if (alignedTo == null)
                 return Vector2.Zero + panelOffset;
-            else
-            {
-                switch (alignment)
-                {
-                    case Alignment.Above :
+            else {
+                switch (alignment) {
+                    case Alignment.Above:
                         return new Vector2(alignedTo.Position.X + XOffset, alignedTo.Position.Y + YOffset - Height);
-                    case Alignment.Below :
+                    case Alignment.Below:
                         return new Vector2(alignedTo.Position.X + XOffset, alignedTo.Position.Y + YOffset + alignedTo.Height - panelOffset.Y);
-                    case Alignment.Right :
+                    case Alignment.Right:
                         return new Vector2(alignedTo.Position.X + XOffset + alignedTo.Width - panelOffset.X, alignedTo.Position.Y + YOffset);
-                    case Alignment.Left :
+                    case Alignment.Left:
                         return new Vector2(alignedTo.Position.X + XOffset - Width, alignedTo.Position.Y + YOffset);
-                    case Alignment.AboveRight :
+                    case Alignment.AboveRight:
                         return new Vector2(alignedTo.Position.X + XOffset + alignedTo.Width - panelOffset.X, alignedTo.Position.Y + YOffset - Height);
-                    case Alignment.AboveLeft :
+                    case Alignment.AboveLeft:
                         return new Vector2(alignedTo.Position.X + XOffset - Width, alignedTo.Position.Y + YOffset - Height);
-                    case Alignment.BelowRight :
+                    case Alignment.BelowRight:
                         return new Vector2(alignedTo.Position.X + XOffset + alignedTo.Width - alignedTo.XOffset, alignedTo.Position.Y + YOffset + alignedTo.Height - panelOffset.Y);
-                    case Alignment.BelowLeft :
+                    case Alignment.BelowLeft:
                         return new Vector2(alignedTo.Position.X + XOffset - Width, alignedTo.Position.Y + YOffset + alignedTo.Height - panelOffset.Y);
-                    default :
+                    default:
                         return Vector2.Zero + panelOffset;
                 }
             }
         }
 
-        public void RecalculateClickArea()
-        {
-            if(alignedTo != null)
+        public void RecalculateClickArea() {
+            if (alignedTo != null)
                 Position = GetRelativeDrawOffset();
-            else if (alignment != null)
-            {
+            else if (alignment != null) {
                 int width = Engine.GetGraphicsDevice().Viewport.Width, height = Engine.GetGraphicsDevice().Viewport.Height;
 
-                switch (alignment)
-                {
+                switch (alignment) {
                     case Alignment.Above:
                         Position = new Vector2(width / 2 + XOffset, YOffset); break;
                     case Alignment.Below:
@@ -115,7 +103,7 @@ namespace InfiniteBoxEngine.GUI.Controls
                     case Alignment.AboveRight:
                         Position = new Vector2(width - Width + XOffset, YOffset); break;
                     case Alignment.AboveLeft:
-                        Position = new Vector2(XOffset,YOffset); break;
+                        Position = new Vector2(XOffset, YOffset); break;
                     case Alignment.BelowRight:
                         Position = new Vector2(width - Width + XOffset, height - Height + YOffset); break;
                     case Alignment.BelowLeft:
@@ -125,89 +113,75 @@ namespace InfiniteBoxEngine.GUI.Controls
                     default:
                         Position = Position; break;
                 }
-            }          
+            }
         }
 
-        public bool Usable
-        {
+        public bool Usable {
             get { return usable; }
             set { usable = value; }
         }
 
-        public bool Visible
-        {
+        public bool Visible {
             get { return visible; }
             set { visible = value; }
         }
 
-        public Control AlignedTo
-        {
+        public Control AlignedTo {
             get { return alignedTo; }
             set { alignedTo = value; }
         }
 
-        public Alignment Alignment
-        {
+        public Alignment Alignment {
             get { return alignment; }
             set { alignment = value; }
         }
 
-        public float XOffset
-        {
+        public float XOffset {
             get { return xOffset; }
             set { xOffset = value; }
         }
 
-        public float YOffset
-        {
+        public float YOffset {
             get { return yOffset; }
             set { yOffset = value; }
         }
 
-        public Color BackgroundColor
-        {
+        public Color BackgroundColor {
             get { return backgroundColor; }
             set { backgroundColor = value; }
         }
 
-        public bool ShowBorder
-        {
+        public bool ShowBorder {
             get { return showBorder; }
             set { showBorder = value; }
         }
 
-        public Color BorderColor
-        {
+        public Color BorderColor {
             get { return borderColor; }
             set { borderColor = value; }
         }
 
-        public float Transparency
-        {
+        public float Transparency {
             get { return transparency; }
             set { transparency = value; }
         }
 
-        public Dictionary<String, Texture2D> Images
-        {
+        public Dictionary<String, Texture2D> Images {
             get { return images; }
             set { images = value; }
         }
 
-        public bool ScreenAligned
-        {
+        public bool ScreenAligned {
             get { return screenAligned; }
             set { screenAligned = value; }
         }
 
-        public bool CanBeFocused
-        {
+        public bool CanBeFocused {
             get { return canBeFocus; }
             set { canBeFocus = value; }
         }
 
-        public bool IsFocused
-        {
+        public bool IsFocused {
             get { return isFocused; }
             set { isFocused = value; OnFocusedChanged(value); }
         }

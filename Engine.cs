@@ -15,10 +15,8 @@ using InfiniteBoxEngine.Skeletal.Animation;
 using FarseerPhysics.Dynamics;
 using InfiniteBoxEngine.GUI.Menu;
 
-namespace InfiniteBoxEngine
-{
-    public class Engine
-    {
+namespace InfiniteBoxEngine {
+    public class Engine {
         static Game game;
         static GraphicsDeviceManager graphics;
         static ControlManager controlManager;
@@ -34,10 +32,9 @@ namespace InfiniteBoxEngine
         TimeSpan elapsedTime = TimeSpan.Zero;
         static TimeSpan totalGameTime;
 
-        static float PHYSICS_STEP = 1f / 60f;   
+        static float PHYSICS_STEP = 1f / 60f;
 
-        public Engine(Game aGame, GraphicsDeviceManager aGraphics)
-        {
+        public Engine(Game aGame, GraphicsDeviceManager aGraphics) {
             game = aGame;
             graphics = aGraphics;
             controlManager = new ControlManager(Mouse.GetState(), Keyboard.GetState());
@@ -48,49 +45,43 @@ namespace InfiniteBoxEngine
             gameworld = new Gameworld(aGame);
         }
 
-        public void Initialize()
-        {
+        public void Initialize() {
             game.Window.ClientSizeChanged += new EventHandler<EventArgs>(Window_ClientSizeChanged);
             gameworld.Camera.Focus = Vector2.Zero;
             gameworld.Camera.TargetScale = 1;
             gameworld.Camera.Initialize();
         }
 
-        private void Window_ClientSizeChanged(object sender, EventArgs e)
-        {
+        private void Window_ClientSizeChanged(object sender, EventArgs e) {
             Console.Out.WriteLine("Resized: " + game.Window.ClientBounds.ToString());
             gameworld.Camera.Initialize();
         }
 
-        public void Update(GameTime gameTime)
-        {
+        public void Update(GameTime gameTime) {
             totalGameTime = gameTime.TotalGameTime;
             HandleInput();
             guiManager.UpdateGUI(controlManager);
 
-            if(currentMenu != null)
+            if (currentMenu != null)
                 currentMenu.UpdateMenu(controlManager);
 
-            if(gameworld.Running)
+            if (gameworld.Running)
                 gameworld.World.Step(PHYSICS_STEP);
-            
+
 
             gameworld.Camera.Update(gameTime);
         }
 
-        public void OpenMenu(Menu menu)
-        {
+        public void OpenMenu(Menu menu) {
             this.CurrentMenu = menu;
             gameworld.Running = false;
         }
 
-        public void CloseMenu(Menu menu)
-        {
+        public void CloseMenu(Menu menu) {
             gameworld.Running = true;
         }
 
-        public void LoadContent()
-        {
+        public void LoadContent() {
             //Button button = new Button("btn_Test", new Vector2(10f, 10f), 100, 40,
             //ContentManager.GetTexture("btn"), ContentManager.GetTexture("btn2"), ContentManager.GetTexture("btn"));
 
@@ -102,8 +93,7 @@ namespace InfiniteBoxEngine
             //    gameworld.CurrentScene.LoadContent();
         }
 
-        private void HandleInput()
-        {
+        private void HandleInput() {
             controlManager.UpdateMouseState(Mouse.GetState());
             controlManager.UpdateKeyboardState(Keyboard.GetState());
 
@@ -111,15 +101,13 @@ namespace InfiniteBoxEngine
                 gameworld.CurrentScene.HandleInput(controlManager);
         }
 
-        public void Draw(GameTime gameTime)
-        {
+        public void Draw(GameTime gameTime) {
             #region GameWorld
             #region GameObjects
             gameSpriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, null, null, null, null, gameworld.Camera.Transform);
 
-            if(gameworld.CurrentScene != null)
-                foreach (GameObject gameObject in gameworld.CurrentScene.GameObjects)
-                {
+            if (gameworld.CurrentScene != null)
+                foreach (GameObject gameObject in gameworld.CurrentScene.GameObjects) {
                     gameObject.Draw(gameworld.Camera, gameSpriteBatch, gameTime);
                 }
 
@@ -175,13 +163,11 @@ namespace InfiniteBoxEngine
             //    currentMenu.DrawMenu(uiSpriteBatch, gameTime);
         }
 
-        public static GraphicsDevice GetGraphicsDevice()
-        {
+        public static GraphicsDevice GetGraphicsDevice() {
             return graphics.GraphicsDevice;
         }
 
-        public Menu CurrentMenu
-        {
+        public Menu CurrentMenu {
             get { return Engine.currentMenu; }
             set { Engine.currentMenu = value; }
         }
@@ -192,38 +178,32 @@ namespace InfiniteBoxEngine
         //    set { Engine.gameworld = value; }
         //}
 
-        public static Gameworld Gameworld
-        {
+        public static Gameworld Gameworld {
             get { return Engine.gameworld; }
             internal set { Engine.gameworld = value; }
         }
 
-        public static GUIManager GuiManager
-        {
+        public static GUIManager GuiManager {
             get { return Engine.guiManager; }
             internal set { Engine.guiManager = value; }
         }
 
-        public static ControlManager ControlManager
-        {
+        public static ControlManager ControlManager {
             get { return Engine.controlManager; }
             internal set { Engine.controlManager = value; }
         }
 
-        public static TimeSpan GetGameTime()
-        {
+        public static TimeSpan GetGameTime() {
             return totalGameTime;
         }
 
         public static SpriteBatch GameSpriteBatch { get { return Engine.gameSpriteBatch; } }
         public static SpriteBatch UISpriteBatch { get { return Engine.uiSpriteBatch; } }
 
-        public void DrawCalcFPS(GameTime gameTime)
-        {
+        public void DrawCalcFPS(GameTime gameTime) {
             elapsedTime += gameTime.ElapsedGameTime;
 
-            if (elapsedTime > TimeSpan.FromSeconds(1))
-            {
+            if (elapsedTime > TimeSpan.FromSeconds(1)) {
                 elapsedTime -= TimeSpan.FromSeconds(1);
                 frameRate = frameCounter;
                 frameCounter = 0;

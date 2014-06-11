@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InfiniteBoxEngine.GUI
-{
-    public enum Alignment
-    {
+namespace InfiniteBoxEngine.GUI {
+    public enum Alignment {
         Below,
         Above,
         Left,

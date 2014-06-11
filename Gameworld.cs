@@ -7,10 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InfiniteBoxEngine
-{
-    public class Gameworld
-    {
+namespace InfiniteBoxEngine {
+    public class Gameworld {
         static World world;
         static Scene currentScene;
         static Serialiser serialiser = new Serialiser();
@@ -20,8 +18,7 @@ namespace InfiniteBoxEngine
         static float PHYSICS_STEP = 1f / 60f;
         static float GRAVITY = -98.1f;
 
-        public Gameworld(Game game)
-        {
+        public Gameworld(Game game) {
             this.game = game;
             world = new World(new Vector2(0f, GRAVITY));
             camera = new Camera2D(game);
@@ -29,7 +26,7 @@ namespace InfiniteBoxEngine
 
             //Set display to simulation display ratio
             ConvertUnits.SetDisplayUnitToSimUnitRatio(10f);
-            
+
             //LoadScene("Test");
 
             //currentScene = new Scene("Test");
@@ -47,36 +44,31 @@ namespace InfiniteBoxEngine
             //serialiser.SaveScene(currentScene);
         }
 
-        public World World
-        {
+        public World World {
             get { return world; }
             set { world = value; }
         }
 
-        public Scene CurrentScene
-        {
+        public Scene CurrentScene {
             get { return currentScene; }
             set { currentScene = value; InitializeCurrentScene(); }
         }
 
-        public Camera2D Camera
-        {
+        public Camera2D Camera {
             get { return camera; }
             set { camera = value; }
         }
 
         public bool Running { get; set; }
 
-        public void InitializeCurrentScene()
-        {
+        public void InitializeCurrentScene() {
             EngineContentManager.LoadSceneContent(currentScene, game.GraphicsDevice);
             Engine.GuiManager.ClearControls();
             Engine.Gameworld.World.Clear();
-            currentScene.LoadContent(); 
+            currentScene.LoadContent();
         }
 
-        public void LoadScene(String sceneName)
-        {
+        public void LoadScene(String sceneName) {
             currentScene = serialiser.LoadScene(sceneName);
             EngineContentManager.LoadSceneContent(currentScene, game.GraphicsDevice);
             currentScene.CreateNullBodys(world);

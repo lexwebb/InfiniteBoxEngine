@@ -5,18 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace InfiniteBoxEngine
-{
-    public class Camera2D : GameComponent
-    {
+namespace InfiniteBoxEngine {
+    public class Camera2D : GameComponent {
         private Vector2 _position;
         protected float _viewportHeight;
         protected float _viewportWidth;
         private float _scale, targetScale;
 
         public Camera2D(Game game)
-            : base(game)
-        {
+            : base(game) {
             Origin = Vector2.Zero;
             TargetScale = 1;
             Rotation = 0;
@@ -25,14 +22,13 @@ namespace InfiniteBoxEngine
 
         #region Properties
 
-        public Vector2 Position
-        {
+        public Vector2 Position {
             get { return _position; }
             set { _position = value; }
         }
         public float Rotation { get; set; }
         public Vector2 Origin { get; set; }
-        public float CurrentScale { get { return _scale; }}
+        public float CurrentScale { get { return _scale; } }
         public float TargetScale { get { return targetScale; } set { if (value < 0.1f) targetScale = 0.1f; else targetScale = value; } }
 
         public Vector2 ScreenCenter { get; protected set; }
@@ -45,8 +41,7 @@ namespace InfiniteBoxEngine
         /// <summary>
         /// Called when the GameComponent needs to be initialized. 
         /// </summary>
-        public override void Initialize()
-        {
+        public override void Initialize() {
             _viewportWidth = Game.GraphicsDevice.Viewport.Width;
             _viewportHeight = Game.GraphicsDevice.Viewport.Height;
 
@@ -57,8 +52,7 @@ namespace InfiniteBoxEngine
             base.Initialize();
         }
 
-        public override void Update(GameTime gameTime)
-        {
+        public override void Update(GameTime gameTime) {
             // Create the Transform used by any
             // spritebatch process
             Transform = Matrix.Identity *
@@ -67,7 +61,7 @@ namespace InfiniteBoxEngine
                         Matrix.CreateTranslation(Origin.X, Origin.Y, 0) *
                         Matrix.CreateScale(new Vector3(CurrentScale, CurrentScale, CurrentScale));
 
-            
+
 
             // Move the Camera to the position that it needs to go
             var delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -92,8 +86,7 @@ namespace InfiniteBoxEngine
         /// <returns>
         ///     <c>true</c> if [is in view] [the specified position]; otherwise, <c>false</c>.
         /// </returns>
-        public bool IsInView(Vector2 position, Texture2D texture)
-        {
+        public bool IsInView(Vector2 position, Texture2D texture) {
             // If the object is not within the horizontal bounds of the screen
 
             if ((position.X + texture.Width) < (Position.X - Origin.X) || (position.X) > (Position.X + Origin.X))
@@ -107,8 +100,7 @@ namespace InfiniteBoxEngine
             return true;
         }
 
-        public Vector2 GetRelativeWorldMousePos(Vector2 mousePos)
-        {
+        public Vector2 GetRelativeWorldMousePos(Vector2 mousePos) {
             Vector2 vec = Vector2.Transform(mousePos, Matrix.Invert(Transform));
             return new Vector2(vec.X, -vec.Y);
         }
