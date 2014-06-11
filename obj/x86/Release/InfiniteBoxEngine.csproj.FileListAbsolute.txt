@@ -1,0 +1,22 @@
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\Content\Error.xnb
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\Content\Font.xnb
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\InfiniteBoxEngine.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\InfiniteBoxEngine.pdb
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\FarseerPhysics MonoGame.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\MonoGame.Framework.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\Newtonsoft.Json.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\SharpDX.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\SharpDX.Direct3D11.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\SharpDX.XAudio2.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\SharpDX.DXGI.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\FarseerPhysics MonoGame.pdb
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\Newtonsoft.Json.pdb
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\Newtonsoft.Json.xml
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\SharpDX.xml
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\SharpDX.Direct3D11.xml
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\SharpDX.XAudio2.xml
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Release\SharpDX.DXGI.xml
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\obj\x86\Release\InfiniteBoxEngine.csprojResolveAssemblyReference.cache
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\obj\x86\Release\InfiniteBoxEngine.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\obj\x86\Release\InfiniteBoxEngine.pdb

@@ -1,0 +1,22 @@
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\obj\x86\Debug\InfiniteBoxEngine.csprojResolveAssemblyReference.cache
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\InfiniteBoxEngine.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\InfiniteBoxEngine.pdb
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\FarseerPhysics MonoGame.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\MonoGame.Framework.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\Newtonsoft.Json.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\SharpDX.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\FarseerPhysics MonoGame.pdb
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\Newtonsoft.Json.pdb
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\Newtonsoft.Json.xml
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\SharpDX.xml
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\obj\x86\Debug\InfiniteBoxEngine.dll
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\obj\x86\Debug\InfiniteBoxEngine.pdb
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\Content\Error.xnb
+C:\Users\Lex\documents\visual studio 2013\Projects\Isic\InfiniteBoxEngine\bin\x86\Debug\Content\Font.xnb
