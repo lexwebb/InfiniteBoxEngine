@@ -31,20 +31,20 @@ namespace InfiniteBoxEngine.Animation.Skeletal {
         }
 
         public void DrawNode(SpriteBatch sb, Vector2 centerPosition, float rotation, Color color) {
-            sb.Draw(nodeTexture, centerPosition * new Vector2(1, -1), null, color, rotation, new Vector2(nodeTexture.Width / 2, nodeTexture.Height / 2), 1f, SpriteEffects.None, 0f);
+            sb.Draw(nodeTexture, centerPosition * new Vector2(1, -1), null, color, rotation, new Vector2(nodeTexture.Width / 2, nodeTexture.Height / 2), 0.5f, SpriteEffects.None, 0f);
         }
 
         public void DrawBone(SpriteBatch sb, Vector2 originPosition, Vector2 endPosition, float length, float rotation, Color color) {
             //Center Line
             DrawUtilities.DrawLineNegativeY(sb, originPosition, endPosition, 1, color);
             //Left line
-            Vector2 pos = originPosition - new Vector2(10, 0);
+            Vector2 pos = originPosition - new Vector2(5, 0);
             Vector2 pos2;
             pos2.X = (float)Math.Cos(-rotation) * (pos.X - originPosition.X) - (float)Math.Sin(-rotation) * (pos.Y - originPosition.Y) + originPosition.X;
             pos2.Y = (float)Math.Sin(-rotation) * (pos.X - originPosition.X) + (float)Math.Cos(-rotation) * (pos.Y - originPosition.Y) + originPosition.Y;
             DrawUtilities.DrawLineNegativeY(sb, pos2, endPosition, 1, color);
             //Right line
-            pos = originPosition + new Vector2(10, 0);
+            pos = originPosition + new Vector2(5, 0);
             pos2.X = (float)Math.Cos(-rotation) * (pos.X - originPosition.X) - (float)Math.Sin(-rotation) * (pos.Y - originPosition.Y) + originPosition.X;
             pos2.Y = (float)Math.Sin(-rotation) * (pos.X - originPosition.X) + (float)Math.Cos(-rotation) * (pos.Y - originPosition.Y) + originPosition.Y;
             DrawUtilities.DrawLineNegativeY(sb, pos2, endPosition, 1, color);
